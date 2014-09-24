@@ -1,0 +1,3 @@
+# log.js
+
+## Currently under development, documentation coming soon...

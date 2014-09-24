@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Log.js Test</title>
+    </head>
+    <body>
+        <div id="log"></div>
+
+
+<!--        <script src="src/intro.js" type="text/Javascript"></script>
+        <script src="src/logger.js" type="text/Javascript"></script>
+        <script src="src/main.js" type="text/Javascript"></script>
+        <script src="src/ext/console.js" type="text/Javascript"></script>
+        <script src="src/ext/dom.js" type="text/Javascript"></script>-->
+        <script src="dist/log.dev.js"></script>
+        <script type="text/Javascript">
+        "use strict";
+        Log.config({
+            level: Log.LEVEL.DEBUG,
+            throws: true,
+            sysInfo: Log.LEVEL.DEBUG
+        });
+        var logger = Log.Console(Log.LEVEL.DEBUG);
+        Log.use(logger);
+        Log.use(Log.DOM(Log.LEVEL.DEBUG, document.getElementById("log")));
+
+
+        Log.debug(logger);
+        Log.info("test");
+        Log.warn("Warning!");
+        Log.caution(undefined);
+        Log.error(new Error("asdf"));
+        Log.critical(new Error("ouch!"));
+
+        throw new Error("test");
+        </script>
+    </body>
+</html>
