@@ -1,8 +1,8 @@
 {
   "name": "log.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple logging framework",
-  "main": "index.js",
+  "main": "dist/log.node.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

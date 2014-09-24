@@ -1,4 +1,4 @@
-GLOBAL.Log = {};
+var Log = {};
 Log.NOOP = function() {};
 Log.LEVEL = {
     DEBUG: -1,
@@ -24,12 +24,16 @@ var _sysinfo = new function SYSINFO() {
     this.performance = GLOBAL.performance || false;
 };
 
-if(window.innerWidth !== undefined && window.innerHeight !== undefined) {
-    _sysinfo.viewport.width = window.innerWidth;
-    _sysinfo.viewport.height = window.innerHeight;
-} else {
-    _sysinfo.viewport.width = document.documentElement.clientWidth;
-    _sysinfo.viewport.height = document.documentElement.clientHeight;
+try {
+    if(window.innerWidth !== undefined && window.innerHeight !== undefined) {
+        _sysinfo.viewport.width = window.innerWidth;
+        _sysinfo.viewport.height = window.innerHeight;
+    } else {
+        _sysinfo.viewport.width = document.documentElement.clientWidth;
+        _sysinfo.viewport.height = document.documentElement.clientHeight;
+    }
+} catch(e) {
+    // fail silently... looks like its node.js
 }
 
 Log.getSysInfo = function() {

@@ -3,7 +3,6 @@
  * https://github.com/bbuecherl/log.js/
  * by Bernhard Buecherl http://bbuecherl.de/
  * License: MIT http://bbuecherl.mit-license.org/ */
-!(function(GLOBAL) {
 var Log = {};
 Log.NOOP = function() {};
 Log.LEVEL = {
@@ -265,5 +264,4 @@ Log.Console = Log.Logger.create("console", function(global) {
     };
 });
 
-GLOBAL.Log = Log;
-}(window));
+module.exports = Log;

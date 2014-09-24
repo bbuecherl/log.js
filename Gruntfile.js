@@ -7,6 +7,7 @@ module.exports = function(grunt) {
             "src/ext/console.js"
         ],
         devFile = "dist/log.dev.js",
+        nodeFile = "dist/log.node.js",
         minFile = "dist/log.min.js";
 
     // Project configuration
@@ -14,19 +15,34 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         concat: {
-            options: {
-                banner: "/**\n"
-                    + " * Log.js v<%= pkg.version %>-<%= grunt.template.today('yymmddHHMM') %>\n"
-                    + " * https://github.com/bbuecherl/log.js/\n"
-                    + " * by Bernhard Buecherl http://bbuecherl.de/\n"
-                    + " * License: MIT http://bbuecherl.mit-license.org/"
-                    + " */\n!(function(GLOBAL) {\n",
-                seperator: "\n",
-                footer: "\n}(window));\n"
-            },
-            dist: {
+            dev: {
+                options: {
+                    banner: "/**\n"
+                        + " * Log.js v<%= pkg.version %>-<%= grunt.template.today('yymmddHHMM') %>\n"
+                        + " * https://github.com/bbuecherl/log.js/\n"
+                        + " * by Bernhard Buecherl http://bbuecherl.de/\n"
+                        + " * License: MIT http://bbuecherl.mit-license.org/"
+                        + " */\n!(function(GLOBAL) {\n",
+                    seperator: "\n",
+                    footer: "\nGLOBAL.Log = Log;\n}(window));\n"
+                },
                 src: srcFiles,
                 dest: devFile
+            },
+
+            node: {
+                options: {
+                    banner: "/**\n"
+                        + " * Log.js v<%= pkg.version %>-<%= grunt.template.today('yymmddHHMM') %>\n"
+                        + " * https://github.com/bbuecherl/log.js/\n"
+                        + " * by Bernhard Buecherl http://bbuecherl.de/\n"
+                        + " * License: MIT http://bbuecherl.mit-license.org/"
+                        + " */\n",
+                    seperator: "\n",
+                    footer: "\nmodule.exports = Log;\n"
+                },
+                src: srcFiles,
+                dest: nodeFile
             }
         },
 

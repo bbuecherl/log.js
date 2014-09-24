@@ -25,12 +25,12 @@
         Log.use(Log.DOM(Log.LEVEL.DEBUG, document.getElementById("log")));
 
 
-        Log.debug(logger);
-        Log.info("test");
-        Log.warn("Warning!");
-        Log.caution(undefined);
-        Log.error(new Error("asdf"));
-        Log.critical(new Error("ouch!"));
+        Log.group("test").debug(logger);
+        Log.group("test").info("test");
+        Log.group("test").warn("Warning!");
+        Log.group("test").caution(undefined);
+        Log.group("test").error(new Error("asdf"));
+        Log.group("test").critical(new Error("ouch!"));
 
         throw new Error("test");
         </script>
